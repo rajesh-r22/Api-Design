@@ -43,6 +43,8 @@ public class SecurityConfig {
                 .roles("OPERATOR")
                 .build();
 
+
+
         return new InMemoryUserDetailsManager(admin, operator);
     }
 }
