@@ -2,11 +2,10 @@ package com.example.Device_Application.controller;
 
 import com.example.Device_Application.dto.ExecuteRequest;
 import com.example.Device_Application.service.DeviceService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/device")
@@ -25,11 +24,10 @@ public class DeviceController {
             @RequestBody ExecuteRequest request,
             Authentication authentication) {
 
-        String username = authentication.name();
+        String username = authentication.getName();
 
         deviceService.execute(id, request, username);
 
         return ResponseEntity.ok("Execution started");
     }
 }
-
